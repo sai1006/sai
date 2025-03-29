@@ -1,0 +1,340 @@
+Commands on how to create files or directories using Cat, touch, vi, Mkdir
+
+     cat filea - cat command here is to see what is there in a file
+     ls - list
+     cat >filea - to create a file
+    touch file1 file2 - create files
+     vi filea - to edit a file or add data in a file
+     mkdir dir1 dir2 - to make directory
+     ls -a - total list
+   
+     cd dir2 - command to change directory or file
+     cd .. - command to come out from a file or directory
+     pwd - print working directory
+     touch .filex .filey -  To create hidden files , dot represents a hidden file
+Vi editor:
+  :se nu - to know how many lines in vi
+   dd - delete a line in vi 
+   xdd - (x-number) deletes no of lines
+   yy - copies, p - paste
+   shift + e - last word in a line, shift + w - first word in a line
+
+
+How to copy, move, remove, delete a file or directory
+   
+     cp filea file1 - copy file
+     rm -rf filea - forcefully delete a file
+     rmdir dir1 - remove directory
+     rm -rp dir1 - removes non empty directories
+     rm -rf dir1 - forcefully removes a directory
+    rm -rf dirx.tar
+    rm -rf softfile1
+   mv file1 file2 - move a file from one to other
+    tail hello - tail command is used to print the last 10 lines in a file
+     hostname - to know which machine you are using
+     cat /etc/os-release - os release date
+     nano file1 - nano is also used to create a file or edit
+  
+     echo "Hello" - to show a message echo command is used
+     head hello - prints first 10 lines in a file
+     head -50 hello - prints first 50 lines 
+     sort -u hello - sorts alphabatically
+   uname -r - kernel release, uname -s - kernel version details
+    vi sysctl.conf - system control configuration
+     vi vconsole.conf - console configuration
+     cd /tmp/ - change directory to temporary files
+  
+     vi sudo.conf
+     sd -h
+     df -h
+
+How to know configuration, ip address, how to install and check status   
+     ifconfig - to know ip address, internet, port etc
+     hostname -i - to know inly ip address
+     yum install httpd - yum command is used to install a software
+     service httpd start - to start a software
+     service httpd status - to check the status of a software
+     chkconfig httpd on - check if the software is active
+     chkconfig httpd off - turn off the software
+     yum update httpd - update a software
+  
+     du file2 - file usage
+     du -sch file2 – To know the size of a file
+    cat file2 | wc -l - count no of lines
+    ls -al – List all
+   cat >> file1 - edit a file
+How to create a softfile, backup file, how to zip all files, unzip, extract:
+    ln -s file1 softfile1 - softfile is a copy of a file
+   ln file2 backupfile2 - backup file is a backup of a file.
+  
+   tar -cvf dirx.tar dir1 - create verbrose forcefully, this command is used to            combine all files in one 
+    gzip dirx.tar - it is used to zip all files
+   gunzip dirx.tar.gz - unzip file
+   tar -xvf dirx.tar - extract files
+  wget url - to download a file
+Grep command:
+    grep root /etc/passwd - to find a particular text in a file or directory
+    cat file1 | wc -l – To check how many lines in a file
+    cat file1 | grep "hai" - to find word "hai" in file 1
+   cat file1 | grep "bye" | wc -l - finds word "bye" in file 1 and shows in how many lines it is written
+  
+    find / -name "file1"
+    find / -name "dir1"
+    find / -type d name "dir1"
+  
+    ll -lia
+    find / -type d -name "dir1"
+  
+ 
+   
+    chmod 700 file1 - change mode of file1
+    chmod 777 file1
+    echo "hello" > file8 - 
+    echo "thanks" >> file8 - adds data in a file
+
+   du -sch filename - size of a file
+   ll -ltrah, ll -la - to know all details for ex root, directory, data of files etc
+   find / -name filename - to find path of file
+   chown - change ownership of a file or dir
+   chgrp - change group of a file or dir
+
+User and Group Administration:
+    useradd Eqtiar - adds user
+    cat /etc/passwd - check root directory
+    uderadd user1
+    useradd user2
+    useradd user3
+    groupadd groupname - adds group
+  
+    cat /etc/group 
+    gpasswd -M user1,user2,user3 groupname - this command is used to add users in a group
+
+
+   cat /etc/passwd - 
+   0 - root user
+   1-999 - system user
+   1000-60000+ - normal user
+
+   cat /etc/passwd | grep username
+   eqtiar: - username
+   x: - encrypted password
+   1005: - UID unique id
+   1006: - GID group id
+   : comments
+   /home/eqtiar - home directory
+   :/bin/bash - shell
+
+
+   cat /etc/default | useradd
+   useradd -u -g -d -c -s -G
+   u - user id
+   g - primary group
+   d - home directory
+   c - comments
+   s - shell
+   G - secondary group
+
+   chage -l username
+   Last password change                                    : May 12, 2021
+   Password expires                                        : never
+   Password inactive                                       : never
+   Account expires                                         : never
+   Minimum number of days between password change          : 0
+   Maximum number of days between password change          : 99999
+   Number of days of warning before password expires       : 7
+
+   userdel username - deletes username but home directory will be there
+   userdel -r username - deletes user and its directories
+
+   # tail -1 /etc/group
+   test:x:1000:test
+   The following describes this entry:
+
+   Field	Description
+   test	     Group Name
+   x	     Indicates that shadow passwords are used
+   1000	     GID
+   test	     List of users that are members of the group
+
+   # tail -1 /etc/gshadow 
+test:!!::test
+The following describes this entry:
+
+Field	Description
+test	Group Name
+x	Hashed password. The !! Indicates that the account is locked.
+Oracle 	List of users that are members of the group
+
+# useradd -D
+GROUP=100
+HOME=/home
+INACTIVE=-1
+EXPIRE=
+SHELL=/bin/bash
+SKEL=/etc/skel
+CREATE_MAIL_SPOOL=yes
+The INACTIVE directive sets the number of days after a password expires until the account is locked. A value of 0 locks the account as soon as the password expires. A value of -1 disables the feature. Contents of the SKEL (/etc/skel by default) are copied to a new user’s home directory when the user account is created. Default settings are stored in /etc/default/useradd. The following options, used with –D, change the useradd command defaults:
+•	-b default_home: The initial path prefix for a new user’s home directory
+•	-e default_expire_date: The date on which the user account is disabled
+•	-f default_inactive: The number of days after a password has expired before the account is locked
+•	-g default_group: The group name or ID for a new user’s initial group
+•	-s default_shell: The new user’s login shell
+
+
+[root@ip-172-31-18-61 ec2-user]# usermod -g dell
+Usage: usermod [options] LOGIN
+
+Options:
+  -c, --comment COMMENT         new value of the GECOS field
+  -d, --home HOME_DIR           new home directory for the user account
+  -e, --expiredate EXPIRE_DATE  set account expiration date to EXPIRE_DATE
+  -f, --inactive INACTIVE       set password inactive after expiration
+                                to INACTIVE
+  -g, --gid GROUP               force use GROUP as new primary group
+  -G, --groups GROUPS           new list of supplementary GROUPS
+  -a, --append                  append the user to the supplemental GROUPS
+                                mentioned by the -G option without removing
+                                the user from other groups
+  -h, --help                    display this help message and exit
+  -l, --login NEW_LOGIN         new value of the login name
+  -L, --lock                    lock the user account
+  -m, --move-home               move contents of the home directory to the
+                                new location (use only with -d)
+  -o, --non-unique              allow using duplicate (non-unique) UID
+  -p, --password PASSWORD       use encrypted password for the new password
+  -R, --root CHROOT_DIR         directory to chroot into
+  -P, --prefix PREFIX_DIR       prefix directory where are located the /etc/* files
+  -s, --shell SHELL             new login shell for the user account
+  -u, --uid UID                 new UID for the user account
+  -U, --unlock                  unlock the user account
+  -v, --add-subuids FIRST-LAST  add range of subordinate uids
+  -V, --del-subuids FIRST-LAST  remove range of subordinate uids
+  -w, --add-subgids FIRST-LAST  add range of subordinate gids
+  -W, --del-subgids FIRST-LAST  remove range of subordinate gids
+  -Z, --selinux-user SEUSER     new SELinux user mapping for the user account
+
+# chage john
+Changing the aging information for john
+Enter the new value, or press ENTER for the default
+
+	Minimum Password Age [0]: 
+	Maximum Password Age [99999]: 
+	Last Password Change (YYYY-MM-DD) [2018-03-24]: 
+	Password Expiration Warning [7]: 
+	Password Inactive [-1]: 
+	Account Expiration Date (YYYY-MM-DD) [-1]:
+
+
+Password aging information is stored in the /etc/shadow file. To view the user john’s entry before making any changes:
+# grep john /etc/shadow
+john:$6$fJB4dWkt$...:17614:0:99999:7:::
+Changing the minimum password age value to 14 and maximum password age value to 30 means that in 14 days the user has 30 days to change their password. The new entry appears as:
+# grep john /etc/shadow
+john:$6$fJB4dWkt$...:17614:14:30:7:::
+
+# chage -l john – To list aging information
+
+# userdel username – To delete user
+# userdel -r username – To delete user along with home directory
+
+#id username – to check id
+User id(UID) , group id(GID)
+
+#gpasswd -M user1,user2,user3 group – To add multiple users in group
+
+Tail /etc/group – To check the group details
+
+#gpasswd – A username groupname – To make a user admin for a group
+#gpasswd -d username groupname – To delete a user from group
+
+
+SED Command:
+It is used to select a text, substitute, add, delete and modify a text.
+
+Echo howtopoke | sed ‘s/poke/puke/’
+Howtopoke – is a text 
+The text poke is substituted by puke using command sed
+
+Create a file using vi and add text using words like day, good etc to substitute them and print, and give gaps between para’s
+
+Sed -n ‘1,4p’ filename – this command is used to extract the lines from 1 to 4 in the file. p – print the lines.
+
+Sed -n -e ‘1,4p’ -e ‘6,13p’ filename – here the letter -e is an option which is used to add multiple selections.
+
+
+Sed -n ‘1~3p’ filename – here ~ symbol is used to print the alternate line. The second number tells sed which lines after the starting line we want to see. The number 2 means every second line, 3 means every third line, and so on.
+
+Sed -n ‘/^hey /p’ filename – here ^ symbol is used to find a particular text in a line. hey – the text which has to be extracted and printed(this will print the line in which hey text is present)
+
+Sed -n ‘s/day/week/gp’ filename – this command is used to substitute a text in place of another. day text has to be substituted with week, g—global for whole file.
+
+Sed -n ‘s/[Dd]ay/week/gp’ filename – the square bracket is used if there is capital and normal texts which has to be changed. Here Day or day will be changed by week.
+
+Sed -n ‘1,4 s/ */ /gp’ filename – here the asterisk * represents the space you want between the words. There is space after every forward slash.
+
+Sed -n -e ‘s/day/week/gp’ -e ‘s/good/bad/gp’ filename – here you can exchange 2 texts using -e option.
+Sed -n ‘s/day/week/gp’;‘s/good/bad/gp’ filename – same as above command without using -e and using semicolon in place of -e.
+
+AWK Command:
+
+awk '{print}' file2 – it is used to print
+apple
+papaya
+kiwi
+strawberry
+litchi
+banana
+pineapple
+muskmelon
+watermelon
+jackfruit
+awk 'END {print NR}' file2 – this command is used to print the no of lines in a file.
+10 
+awk '/melon/' file2 – this command is used to find a particular text and prints.
+muskmelon
+watermelon
+awk '/^p/' file2 – here ^ is used to find a particular word in a line and prints the line.
+papaya
+pineapple
+awk '/^p/ {print $1;}' file2 – here {print $1;} this command prints first part only.
+If in a file you have pine apple, pick one, post man it prints pine, pick, post only as you gave $1 in command, if you give $2 it will print apple, one, man.
+
+Zip/UnZip:
+
+Zip is a file compression packaging technique same like archieve.
+
+Syntax: zip -option zipname.zip filename/dirname
+
+To add a file into existing zip option -u is used
+# zip -u zipname.zip filename
+Suppose there are file1,file2,file3 in the zip and you want to add another file the command should be : # zip -u zipname.zip file4
+
+To delete a file in zip -d option is used
+# zip -d zipname.zip file2
+Here file 2 gets deleted from that zip.
+
+To delete original files -m option is used.
+For example 1,2,3,4,5,6 files are there in zip then by using the command
+# zip -m zipname.zip 1,2,3,4,5,6 – here after this command type ls and you will only see zipname.zip remaining files will be deleted.
+
+To exclude a particular file from zip -x option is used
+# zip -x zipname.zip file3 – here file3 will be excluded 
+
+To unzip use # unzip zipname.zip
+
+# unzip -Z zipname.zip – this command is used to know the detailed information of the zip file.
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+
+
+
